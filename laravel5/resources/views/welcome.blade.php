@@ -16,7 +16,7 @@
                 width: 100%;
                 display: table;
                 font-weight: 100;
-                font-family: 'Lato';
+                font-family: 'Lucida Handwriting';
             }
 
             .container {
@@ -31,14 +31,14 @@
             }
 
             .title {
-                font-size: 96px;
+                font-size: 130px;
             }
         </style>
     </head>
     <body>
         <div class="container">
             <div class="content">
-                <div class="title">Laravel 5</div>
+                <div class="title">Welcome <br> Hervandi</div>
             </div>
         </div>
     </body>
