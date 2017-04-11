@@ -17,6 +17,7 @@
 				<td>{{ $ruangan->created_at }}</td>
 			</tr>
 			<tr>
+			<td class="col-xs-4"> Tanggal Update</td>
 				<td class="col-xs-1">:</td>
 				<td>{{ $ruangan->updated_at }}</td>
 			</tr>

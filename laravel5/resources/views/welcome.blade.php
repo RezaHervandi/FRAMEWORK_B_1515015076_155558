@@ -16,7 +16,7 @@
                 width: 100%;
                 display: table;
                 font-weight: 100;
-                font-family: 'Lucida Handwriting';
+                font-family: 'Lato';
             }
 
             .container {
@@ -31,14 +31,14 @@
             }
 
             .title {
-                font-size: 130px;
+                font-size: 96px;
             }
         </style>
     </head>
     <body>
         <div class="container">
             <div class="content">
-                <div class="title">Welcome <br> Hervandi</div>
+                <div class="title">Welcome Hervandi</div>
             </div>
         </div>
     </body>

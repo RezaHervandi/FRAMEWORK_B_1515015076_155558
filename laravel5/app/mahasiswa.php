@@ -7,16 +7,33 @@ use Illuminate\Database\Eloquent\Model;
 class mahasiswa extends Model
 {
     protected $table = 'mahasiswa';
+    //protected $fillable = ['nim','nama','alamat','pengguna_id'];
+    protected $guarded = ['id'];
+
+    public function pengguna() //membuat fungsi dengan nama pengguna
+    {
+    	return $this->belongsTo(pengguna::class);
+        //sintaks ini menghubungkan antara model mahasiswa dengan model pengguna, yang artinya kita bisa mengakses model pengguna melalui model mahasiswa. jadi isi dai tabel pengguna bisa kita tampilkan melalui model mahasiswa, begitu juga kebalikannya.
+    }
+
+    public function jadwal_matakuliah() //membuat fungsi dengan nama jadwal_matakuliah
+    {
+    	return $this->hasMany(jadwal_matakuliah::class);
+        //sintaks ini menghubungkan antara model mahasiswa dengan model jadwal_matakuliah,artinya kita bisa mengakses model jadwal_matakuliah melalui model mahasiswa.sintaks hasmany menandakan bahwa relasinya adalah one to many.
+    }
+
+    public function getusernameAttribute()
+    {
+        return $this->pengguna->username;
+    }
     
-    public function pengguna()
-	{
-		return $this->belongsTo(pengguna::class);
-	}
-
-	 public function jadwal_matakuliah()
-	{
-		return $this->hasMany(jadwal_matakuliah::class,'foreign_key');
-	}
-
-	//pada tabel relasi terlihat bahwasan nya tabel mahasiswa berelasi dengan tabel jadwal_matakuliah dan juga tabel pengguna dengan masing-masing kardinalitasnya 1 to many dan 1 to 1 jadi dari tabel mahasiswa kita panggil fungsi function jadwal_matakuliah dan pengguna agar dapat saling berelasi. dan juga menggunakan fungsi this->hasMany dan juga fungsi this->belongsTo karena kebalikan dari hasOne di model pengguna. pada parameter nya pun jgn lupa menyertakan foreign_key karena 1 to many
+    public function listmahasiswadannim()
+    {
+        $out = [];
+        foreach ($this->all() as $mhs)
+        {
+            $out[$mhs->id] = "{$mhs->nama} ({$mhs->nim})";
+        }
+        return $out;
+    }
 }
